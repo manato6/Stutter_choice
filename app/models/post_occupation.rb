@@ -1,0 +1,2 @@
+class PostOccupation < ApplicationRecord
+end
