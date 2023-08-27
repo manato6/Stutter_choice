@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-
-  get 'homes/top'
   
   namespace :admin do
     resources :users
@@ -17,11 +15,13 @@ Rails.application.routes.draw do
     resources :comments
   end
     
+  get 'homes/top' => 'homes#top'
   
   scope module: :public do
     resources :users
     resources :posts
     resources :favorites
     resources :comments
+    
   end
 end
