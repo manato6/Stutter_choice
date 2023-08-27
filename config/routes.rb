@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -9,4 +10,18 @@ Rails.application.routes.draw do
 }
 
   get 'homes/top'
+  
+  namespace :admin do
+    resources :users
+    resources :posts
+    resources :comments
+  end
+    
+  
+  scope module: :public do
+    resources :users
+    resources :posts
+    resources :favorites
+    resources :comments
+  end
 end
