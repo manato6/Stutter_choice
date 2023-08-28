@@ -1,0 +1,10 @@
+<h1>投稿</h1>
+
+<%= form_with model: Post.new do |f| %>
+
+<div class="field">
+  <%= f.label :タイトル %><br>
+  <%= f.text_field :title %>
+</div>
+
+<% end %>

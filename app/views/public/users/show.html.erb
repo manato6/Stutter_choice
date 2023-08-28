@@ -1,0 +1,10 @@
+<h5>プロフィール</h5>
+<div>
+<p><%= @user.name %></p>
+<p>性別 <%= @user.gender %></p>
+<p>年齢 <%= @user.age %></p>
+</div>
+
+<div><%= link_to "プロフィール編集ボタン",edit_user_path %></div>
+
+<div><%= link_to "投稿する",new_post_path %></div>
