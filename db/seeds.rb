@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Occupation.create([
-  { name: '飲食店' },
-  { name: 'タグ2' },
-  { name: 'タグ3' },
-  { name: 'タグ4' },
-  { name: 'タグ5' }
+Job.create([
+  { job_name: '飲食店' },
+  { job_name: '公務員' },
+  { job_name: 'タグ3' },
+  { job_name: 'タグ4' },
+  { job_name: 'タグ5' }
 ])

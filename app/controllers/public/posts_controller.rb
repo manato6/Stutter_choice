@@ -17,6 +17,6 @@ class Public::PostsController < ApplicationController
   end
   
   def Post_params
-    params.require(:post).permit(:title, :text, :image, :profession) 
+    params.require(:post).permit(:title, :text, :image, :profession, :job_id) 
   end
 end

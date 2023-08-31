@@ -15,6 +15,18 @@
 <h4>写真</h4>
   <%= f.file_field :image, accept: "image/*" %>
 
+<h4>職業</h4>
+  <div class='form-group'>
+        <%= f.collection_check_boxes(:job_ids, Job.all, :id, :job_name) do |job| %>
+            <div class='form-check'>
+                <%= job.label class: 'form-check-label' do %>
+                    <%= job.check_box class: 'form-check-input' %>
+                    <%= job.text %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+
 
   <%= f.submit '投稿' %>
 
