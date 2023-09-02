@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.save
-    redirect_to user_path
+    redirect_to user_path(current_user)
   end
 
   def show
@@ -15,8 +15,8 @@ class Public::PostsController < ApplicationController
 
   def destroy
   end
-  
-  def Post_params
-    params.require(:post).permit(:title, :text, :image, :profession, :job_id) 
+
+  def post_params
+    params.require(:post).permit(:title, :text, :image, :job, :job_id)
   end
 end

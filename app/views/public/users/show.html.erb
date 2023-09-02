@@ -8,3 +8,10 @@
 <div><%= link_to "プロフィール編集ボタン",edit_user_path %></div>
 
 <div><%= link_to "投稿する",new_post_path %></div>
+
+
+<%= form_with model: @post do |f| %>
+<h4>画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
+
+<% end %>

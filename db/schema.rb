@@ -54,12 +54,15 @@ ActiveRecord::Schema.define(version: 2023_08_31_095301) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.integer "post_id"
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
     t.string "favorite"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -72,14 +75,17 @@ ActiveRecord::Schema.define(version: 2023_08_31_095301) do
   end
 
   create_table "post_jobs", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "job_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|
+    t.integer "user_id"
     t.string "title"
     t.text "text"
-    t.string "profession"
+    t.string "job"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
