@@ -1,5 +1,6 @@
 <h5>プロフィール</h5>
 <div>
+<p><%= image_tag @user.get_profile_image(100,100) %></p>
 <p><%= @user.name %></p>
 <p>性別 <%= @user.gender %></p>
 <p>年齢 <%= @user.age %></p>
