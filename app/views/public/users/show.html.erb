@@ -14,16 +14,30 @@
 
 
 <% @posts.each do |post| %>
-<p><%= post.title %></p>
-<p><%= post.text %></p>
-<p><%= image_tag post.image, size: "50x50" %></p>
-<%= post.created_at.strftime('%Y/%m/%d') %>
+    <p><%= post.title %></p>
+    <p><%= post.text %></p>
+    <p><%= image_tag post.image, size: "50x50" %></p>
+    <%= post.created_at.strftime('%Y/%m/%d') %>
 
-<% post.jobs.each do |job| %>
-    <span><%= job.job_name %></span>
+    <% post.jobs.each do |job| %>
+        <span><%= job.job_name %></span>
+    <% end %>
+
+    <% if post.favorited_by?(current_user) %>
+         <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
+        <%= link_to post_favorites_path(post.id), method: :delete do %>
+            <span style="color:red;">❤︎</span>
+        <% end %>
+    <% else %>
+        <!--# 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+        <%= link_to post_favorites_path(post.id), method: :post do %>
+            <span>❤︎</span>
+        <% end %>
+    <% end %>
+
+
+    <div><%= link_to "詳細",post_path(post) %></div>
+
 <% end %>
 
-<div><%= link_to "詳細",post_path(post) %></div>
-
-<% end %>
 
