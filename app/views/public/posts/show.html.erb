@@ -5,3 +5,16 @@
 <p><%= @user.gender %></p>
 <p><%= @post.job %></p>
 <p><%= @post.text %></p>
+
+<h1>コメントする</h1>
+
+<%= form_with(model:[@post, @comment], method: :post) do |f| %>
+<%= f.text_area :comment %>
+<%= f.hidden_field :post_id, value: @post.id %>
+<%= f.submit 'コメントする' %>
+<% end %>
+
+<h2>コメント内容</h2>
+ <% @comments.each do |comment| %>
+  <%= comment.comment %>
+  <% end %>

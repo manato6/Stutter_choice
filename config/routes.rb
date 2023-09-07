@@ -17,13 +17,14 @@ Rails.application.routes.draw do
     
   get 'homes/top' => 'homes#top'
   
+  
   scope module: :public do
-    resources :users
-    
-   resources :posts do
-   resource :favorites, only: [:create, :destroy]
-end
-    resources :comments
+     resources :users
+      
+     resources :posts do
+       resource :favorites, only: [:create, :destroy]
+       resources :comments, only: [:create]
+    end
     
   end
 end
