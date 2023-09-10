@@ -9,9 +9,16 @@ class Public::UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(@user.id)
   end
 
   def favorites
+    @user = current_user
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+    
   end
   
     private

@@ -1,11 +1,11 @@
 class Admin::PostsController < ApplicationController
-  
-  def index
-  end
 
   def show
+    @post = Post.find(params[:id])
+    @user = @post.user
+    @comments = @post.comments
   end
-  
-  def dest
+
+  def destroy
   end
 end

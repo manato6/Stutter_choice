@@ -4,7 +4,7 @@
 
 
 <h5>名前</h5>
-<%= user.name %>
+<%=link_to user.name,admin_user_path(user) %>
 
 <h5>メールアドレス</h5>
 <%= user.email %>

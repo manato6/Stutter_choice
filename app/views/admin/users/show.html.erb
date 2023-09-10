@@ -1,0 +1,14 @@
+<h1><%= @user.name %>の投稿一覧</h1>
+
+<% @posts.each do |post| %>
+    <p><%= post.title %></p>
+    <p><%= post.text %></p>
+    <p><%= image_tag post.image, size: "50x50" %></p>
+    <%= post.created_at.strftime('%Y/%m/%d') %>
+
+    <% post.jobs.each do |job| %>
+        <span><%= job.job_name %></span>
+    <% end %>
+    
+    <div><%= link_to "詳細",admin_post_path(post) %></div>
+ <% end %>
