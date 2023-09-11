@@ -1,14 +1,24 @@
-<h1><%= @user.name %>の投稿一覧</h1>
-
-<% @posts.each do |post| %>
-    <p><%= post.title %></p>
-    <p><%= post.text %></p>
-    <p><%= image_tag post.image, size: "50x50" %></p>
-    <%= post.created_at.strftime('%Y/%m/%d') %>
-
-    <% post.jobs.each do |job| %>
-        <span><%= job.job_name %></span>
-    <% end %>
-    
-    <div><%= link_to "詳細",admin_post_path(post) %></div>
- <% end %>
+<div class="container">
+    <h1><%= @user.name %>の投稿一覧</h1>
+    <table class="table">
+        <% @posts.each do |post| %>
+            <tr>
+                <td><%= image_tag post.image, size: "50x50" %></td>
+                <td>
+                    <ul class="m-0">
+                        <% post.jobs.each do |job| %>
+                            <li><%= job.job_name %></li>
+                        <% end %>
+                    </ul>
+                </td>
+                <td><%= post.title %></td>
+                <td><%= post.text %></td>
+                <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+                <td>
+                    <%= link_to "詳細", admin_post_path(post) %>
+                    <%= link_to "削除", admin_post_path(post), method: :delete, data: {confirm: '削除しても良いですか？'} %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+</div>

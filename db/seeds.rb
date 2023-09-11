@@ -6,10 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Job.create([
-  { job_name: '飲食店' },
-  { job_name: '公務員' },
-  { job_name: 'タグ3' },
-  { job_name: 'タグ4' },
-  { job_name: 'タグ5' }
-])
+jobs = [
+  "飲食店", "公務員",
+  "タグ3", "タグ4", "タグ5"
+]
+
+jobs.each do |job|
+  Job.find_or_create_by(job_name: job)
+end
+
+admins = [
+  {email: 'admin1@example.com', password: '123456'},
+  {email: 'admin2@example.com', password: '123456'},
+]
+
+admins.each do |admin|
+  Admin.find_or_create_by(email: admin[:email]) do |a|
+    a.password = admin[:password]
+  end
+end

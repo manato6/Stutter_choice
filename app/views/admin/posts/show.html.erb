@@ -1,13 +1,16 @@
-<h1>投稿詳細</h1>
-<p><%= @post.title %></p>
-<p><%= @user.name %></p>
-<p><%= @user.age %></p>
-<p><%= @user.gender %></p>
-<p><%= @post.job %></p>
-<p><%= @post.text %></p>
+<div class="container">
+ <h1>投稿詳細</h1>
+ <p><%= @post.title %></p>
+ <p><%= @user.name %></p>
+ <p><%= @user.age %></p>
+ <p><%= @user.gender %></p>
+ <p><%= @post.job %></p>
+ <p><%= @post.text %></p>
+ <%= @post.favorites.count %>
 
-
-<h2>コメント内容</h2>
+ <h2>コメント内容</h2>
  <% @comments.each do |comment| %>
   <%= comment.comment %>
-  <% end %>
+  <%= link_to "削除", admin_comment_path(comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+ <% end %>
+</div>
