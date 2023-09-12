@@ -8,9 +8,6 @@ class Admin::PostsController < ApplicationController
   end
 
   def destroy
-    # @comment = Comment.find(params[:id])
-    # @comment.destroy
-    # redirect_to admin_post_path(@comment.post)
      post = Post.find(params[:id]).destroy
     # post.destroy
      redirect_to admin_user_path(post.user)

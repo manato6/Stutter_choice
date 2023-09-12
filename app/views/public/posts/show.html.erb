@@ -1,21 +1,29 @@
+<div class="container">
 <h1>投稿詳細</h1>
-<p><%= @post.title %></p>
-<p><%= @user.name %></p>
-<p><%= @user.age %></p>
-<p><%= @user.gender %></p>
-<p><%= @post.job %></p>
-<p><%= @post.text %></p>
-
-<h1>コメントする</h1>
+<table>
+<tr>
+<th><%= @post.title %></th>
+<td><%= @post.favorites.count %></td>
+</tr>
+<tr>
+<td><%= @user.name %></td>
+<td><%= @user.age %></td>
+<td><%= @user.gender %></td>
+<td><%= @post.job %></td>
+</tr>
+<td><%= @post.text %></td>
+</table>
 
 <%= form_with(model:[@post, @comment], method: :post) do |f| %>
 <%= f.text_area :comment %>
 <%= f.hidden_field :post_id, value: @post.id %>
 <%= f.submit 'コメントする' %>
 <% end %>
-<%= @post.favorites.count %>
 
 <h2>コメント内容</h2>
- <% @comments.each do |comment| %>
-  <%= comment.comment %>
-  <% end %>
+<% @comments.each do |comment| %>
+<%= comment.comment %>
+<% end %>
+
+
+</div>

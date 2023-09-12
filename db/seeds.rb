@@ -7,8 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 jobs = [
-  "飲食店", "公務員",
-  "タグ3", "タグ4", "タグ5"
+  "営業", "公務員",
+  "事務", "人事・経理・総務・企画", "販売・接客・サービス", "飲食",
+  "医療・介護・福祉", "デザイナー"
 ]
 
 jobs.each do |job|
