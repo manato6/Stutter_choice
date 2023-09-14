@@ -9,6 +9,16 @@ class Public::PostsController < ApplicationController
     @post.save
     redirect_to user_path(current_user)
   end
+  
+  def index
+    @posts = params[:job_id].present? ? Job.find(params[:job_id]).posts : Post.all
+    if params[:keyword]
+      @posts = @posts.where("title LIKE ?", "%#{params[:keyword]}%")
+    else
+      @posts = @posts
+    end
+    @keyword = params[:keyword]
+  end
 
   def show
     @post = Post.find(params[:id])

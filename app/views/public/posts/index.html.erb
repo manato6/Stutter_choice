@@ -1,0 +1,7 @@
+<% if @posts  %>
+  <div>
+    <% @posts.each do |post|%>
+    <p><%= post.title %></p>
+    <% end %>
+  </div>
+<% end %>

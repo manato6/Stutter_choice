@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    get "search" => "posts#search"
     resources :users do
       member do
         get :favorites
