@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :users
+    resources :users do
+      member do
+        patch :unsubscribe
+      end  
+    end
     resources :posts
     resources :comments
   end

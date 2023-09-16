@@ -25,5 +25,7 @@
 <%= comment.comment %>
 <% end %>
 
+<%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
 
 </div>

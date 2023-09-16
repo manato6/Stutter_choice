@@ -11,6 +11,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def unsubscribe
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
+    redirect_to admin_users_path
   end
 
  private
