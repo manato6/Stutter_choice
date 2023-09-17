@@ -8,7 +8,9 @@
 
 <h5>メールアドレス</h5>
 <%= user.email %>
-
+<% if user.is_deleted==false %>
 <div><%= link_to "退会する", unsubscribe_admin_user_path(user), method: :patch, "data-confirm" => "本当に退会しますか？" %></div>
-
+<% else %>
+<P>退会済み</P>
+<% end %>
 <% end %>
