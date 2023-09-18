@@ -1,8 +1,8 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-        <%= render "public/posts/search", post: @post %>
-        </div
+<div class="container px-5">
+    <div class="row justify-content-center my-3">
+        <div class="col-5">
+            <%= render "public/posts/search", post: @post %>
+        </div>
     </div>
     
     <div class="row">
@@ -15,40 +15,51 @@
                 <p>年齢 <%= @user.age %></p>
                 </div>
 
-                <div><%= link_to "プロフィール編集ボタン",edit_user_path %></div>
+                <div class="mb-5"><%= link_to "プロフィール編集ボタン",edit_user_path, class:"btn btn-secondary" %></div>
                 
-                <div><%= link_to "投稿する",new_post_path %></div>
+                <div><%= link_to "投稿する",new_post_path, class:"btn btn-secondary" %></div>
                 
-                <%= link_to "いいねした投稿", favorites_user_path(@user) %>
-
+                <%= link_to "いいねした投稿", favorites_user_path(@user), class:"btn btn-secondary" %>
+        </div>
+        
         <div class="col-lg-8">
-            <% @posts.each do |post| %>
-            <p><%= post.title %></p>
-            <p><%= post.text %></p>
-            <p><%= image_tag post.get_image(50,50) %></p>
-            <%= post.created_at.strftime('%Y/%m/%d') %>
-        
-                <% post.jobs.each do |job| %>
-                    <span><%= job.job_name %></span>
-                <% end %>
-        
-                    <% if post.favorited_by?(current_user) %>
-                         <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
-                        <%= link_to post_favorites_path(post.id), method: :delete do %>
-                            <span style="color:red;">❤︎</span>
+            <h2>投稿</h2>
+             <table class="table table-hover table-inverse">
+                  <thead>
+                    <tr>
+                      <th>職業</th>
+                      <th>タイトル</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                 
+                              <% @posts.each do |post| %>
+                            <tr>
+                              <td><% post.jobs.each do |job| %>
+                                    <span><%= job.job_name %></span>
+                                    <% end %></td>
+                              <td><%= post.title %></td>
+                              <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+                              <td>
+                                 <% if post.favorited_by?(current_user) %>
+                             <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
+                            <%= link_to post_favorites_path(post.id), method: :delete do %>
+                                <span style="color:red;">❤︎</span>
+                            <% end %>
+                        <% else %>
+                            <!--# 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+                            <%= link_to post_favorites_path(post.id), method: :post do %>
+                                <span>❤︎</span>
+                            <% end %>
                         <% end %>
-                    <% else %>
-                        <!--# 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
-                        <%= link_to post_favorites_path(post.id), method: :post do %>
-                            <span>❤︎</span>
-                        <% end %>
-                    <% end %>
-
-
-            <div><%= link_to "詳細",post_path(post) %></div>
-
-            <% end %>
-    </div>
+                    <div><%= link_to "詳細",post_path(post) %></div> 
+                              </td>
+                            </tr>
+                            <% end %>
+                      </table>
+                
+        
     </div>
     </div>
 </div>
