@@ -32,30 +32,30 @@
                     </tr>
                   </thead>
                  
-                              <% @posts.each do |post| %>
-                            <tr>
-                              <td><% post.jobs.each do |job| %>
-                                    <span><%= job.job_name %></span>
-                                    <% end %></td>
-                              <td><%= post.title %></td>
-                              <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-                              <td>
-                                 <% if post.favorited_by?(current_user) %>
-                             <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
-                            <%= link_to post_favorites_path(post.id), method: :delete do %>
-                                いいね<span style="color:red;">❤︎</span>
-                            <% end %>
-                        <% else %>
-                            <!--# 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
-                            <%= link_to post_favorites_path(post.id), method: :post do %>
-                                いいね<span>❤︎</span>
-                            <% end %>
+                          <% @posts.each do |post| %>
+                        <tr>
+                          <td><% post.jobs.each do |job| %>
+                                <span><%= job.job_name %></span>
+                                <% end %></td>
+                          <td><%= post.title %></td>
+                          <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+                          <td>
+                             <% if post.favorited_by?(current_user) %>
+                         <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
+                        <%= link_to post_favorites_path(post.id), method: :delete do %>
+                            いいね<span style="color:red;">❤︎</span>
                         <% end %>
-                    <div><%= link_to "詳細",post_path(post), class:"btn btn-secondary" %></div> 
-                              </td>
-                            </tr>
-                            <% end %>
-                      </table>
+                    <% else %>
+                        <!--# 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+                        <%= link_to post_favorites_path(post.id), method: :post do %>
+                            いいね<span>❤︎</span>
+                        <% end %>
+                    <% end %>
+                <div><%= link_to "詳細",post_path(post), class:"btn btn-secondary" %></div> 
+                          </td>
+                        </tr>
+                        <% end %>
+                  </table>
                 
         
     </div>
