@@ -1,15 +1,21 @@
 <div class="container">
-<h1>投稿詳細</h1>
+<h4>投稿詳細</h4>
 <table>
 <tr>
 <th><%= @post.title %></th>
-<td><%= @post.favorites.count %></td>
+<td>いいね<%= @post.favorites.count %></td>
 </tr>
 <tr>
 <td><%= @user.name %></td>
 <td><%= @user.age %></td>
 <td><%= @user.gender %></td>
-<td><%= @post.job %></td>
+<td>
+  <ul>
+    <% @post.jobs.each do |job| %>
+      <li><%= job.job_name %></li>
+    <% end %>
+  </ul>
+</td>
 </tr>
 <td><%= @post.text %></td>
 </table>

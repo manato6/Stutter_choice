@@ -1,43 +1,47 @@
 <div class="container">
-  <div class="row justify-content-center mt-5">
-     <h1>投稿</h1>
-  </div>
-</div>
-  
-  <div class="container">
-      <div class="row mt-4 ml-5">
-          <div class="col">
-           <%= form_with model: Post.new do |f| %>
-              <div class="field">
-                <%= f.label :タイトル %><br>
-                <%= f.text_field :title %>
-              </div>
-          </div>
-       </div>
-       
-       <div class="row mt-4 ml-5">
-          <div class="col">
-              <div class="field">
-                <%= f.label :本文 %><br>
-                <%= f.text_area :text, :size=>"80x5" %>
-              </div>
-          </div>
-       </div>
+  <h1 class="text-center my-5">投稿</h1>
 
-          <div class="row mt-4 ml-5">
-              <div class="col">
-                   <h4>職業</h4>
-                        <%= f.collection_check_boxes(:job_ids, Job.all, :id, :job_name) do |job| %>
-                            <div class='form-check'>
-                                <%= job.label class: 'form-check-label' do %>
-                                    <%= job.check_box class: 'form-check-input' %>
-                                    <%= job.text %>
-                                <% end %>
-                            </div>
-                        <% end %>
-                    
-                    <%= f.submit '投稿' %>
-              <% end %>
+  <%= form_with model: Post.new do |f| %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <%= f.label :text, "本文" %>
+          <%= f.text_area :text, rows: 5, class:"form-control form-control-lg" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <h4>職業</h4>
+          <%= f.collection_check_boxes(:job_ids, Job.all, :id, :job_name) do |job| %>
+            <div class='form-check'>
+                <%= job.label class: 'form-check-label' do %>
+                    <%= job.check_box class: 'form-check-input' %>
+                    <%= job.text %>
+                <% end %>
             </div>
-          </div>
-  </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-3 mx-auto">
+          <%= f.submit '投稿', class: 'btn btn-secondary btn-block' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
