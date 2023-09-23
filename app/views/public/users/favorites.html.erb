@@ -3,7 +3,6 @@
 <% @favorite_posts.each do |favorite_post| %>
     <p><%= favorite_post.title %></p>
     <p><%= favorite_post.text %></p>
-    <p><%= image_tag favorite_post.image, size: "50x50" %></p>
     <%= favorite_post.created_at.strftime('%Y/%m/%d') %>
 
     <% favorite_post.jobs.each do |job| %>
