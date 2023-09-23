@@ -1,41 +1,41 @@
 <div class="container">
   <h4 class="text-center my-5">投稿詳細</h4>
-  <div class="text-form-center">
-    <table>
-        <tr>
-          <th><h3><%= @post.title %></h3></th>
-          <td>　いいね<%= @post.favorites.count %></td>
-        </tr>
-        <tr>
-          <td><%= @user.name %></td>
-          <td><%= @user.age %>歳</td>
-          <td><%= @user.gender %></td>
-          <td>
-            <ul>
-              <% @post.jobs.each do |job| %>
-                <li><%= job.job_name %></li>
-              <% end %>
-            </ul>
-          </td>
-        </tr>
-      <td><%= @post.text %></td>
-    </table>
-
-    <div class="form-group">
-      <%= form_with(model:[@post, @comment], class: "form-comment", method: :post) do |f| %>
-        <%= f.text_area :comment, class:"form-control mr-2", rows: 2 %>
-        <%= f.hidden_field :post_id, value: @post.id %>
-        <%= f.submit 'コメントする' %>
+    <div class="text-form-center">
+      <table>
+          <tr>
+            <th><h3><%= @post.title %></h3></th>
+            <td>　いいね<%= @post.favorites.count %></td>
+          </tr>
+          <tr>
+            <td><%= @user.name %></td>
+            <td><%= @user.age %>歳</td>
+            <td><%= @user.gender %></td>
+            <td>
+              <ul>
+                <% @post.jobs.each do |job| %>
+                  <li><%= job.job_name %></li>
+                <% end %>
+              </ul>
+            </td>
+          </tr>
+        <td><%= @post.text %></td>
+      </table>
+  
+      <div class="form-group">
+        <%= form_with(model:[@post, @comment], class: "form-comment", method: :post) do |f| %>
+          <%= f.text_area :comment, class:"form-control mr-2", rows: 2 %>
+          <%= f.hidden_field :post_id, value: @post.id %>
+          <%= f.submit 'コメントする' %>
+        <% end %>
+      </div>
+  
+  
+      <h4>コメント内容</h4>
+      <% @comments.each do |comment| %>
+        <%= comment.comment %>
+        <%= link_to "コメント削除", post_comment_path(@post.id, comment),class:"btn btn-secondary", method: :delete, "data-confirm" => "本当に削除しますか？" %>
       <% end %>
+  
+      <%= link_to "投稿削除", post_path(@post.id), class:"btn btn-secondary", method: :delete, "data-confirm" => "本当に削除しますか？" %>
     </div>
-
-
-    <h4>コメント内容</h4>
-    <% @comments.each do |comment| %>
-      <%= comment.comment %>
-      <%= link_to "コメント削除", post_comment_path(@post.id, comment),class:"btn btn-secondary", method: :delete, "data-confirm" => "本当に削除しますか？" %>
-    <% end %>
-
-    <%= link_to "投稿削除", post_path(@post.id), class:"btn btn-secondary", method: :delete, "data-confirm" => "本当に削除しますか？" %>
-  </div>
 </div>

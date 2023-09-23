@@ -1,13 +1,18 @@
 <div class="container">
-  <h1>STUTTER CHOICE</h1>
+  <div class="row justify-content-center my-3">
+    <h1>STUTTER CHOICE</h1>
+     </div>
+  
+        <table>
+            <tr>
+                <td><%= link_to "sign_up", new_user_registration_path %></td>
+                <td><%= link_to "login", new_user_session_path %></td>
+            </tr>
+        </table>
+        
 
-  <table>
-      <tr>
-          <td><%= link_to "sign_up", new_user_registration_path %></td>
-          <td><%= link_to "login", new_user_session_path %></td>
-      </tr>
-  </table>
 
+
+      <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>
+    
 </div>
-
-<%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>
