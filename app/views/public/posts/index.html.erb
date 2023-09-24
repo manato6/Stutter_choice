@@ -1,9 +1,33 @@
+<div class="container">
+  <h2>検索結果</h2>
+    <table class="table">
+      <tr>
+        <th>職業</th>
+        <th>タイトル</th>
+        <th>投稿日時</th>
+        <th> </th>
+      </tr>
+    </table>
+      
+    <table class="table">
+      <% if @posts  %>
+        <div>
+          <% @posts.each do |post|%>
+            <tr>
+              <td>
+                <ul class="m-0">
+                  <% post.jobs.each do |job| %>
+                    <li><%= job.job_name %></li>
+                  <% end %>
+                </ul>
+              </td>
+              <td><%= post.title %></td>
+              <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+              <td><%= link_to "詳細", post_path(post) %></td>
+            </tr>
+          <% end %>
+        </div>
+      <% end %>
+    </table>
+</div>
 
-<% if @posts  %>
-  <div>
-    <% @posts.each do |post|%>
-    <p><%= post.title %></p>
-    <p><%= post.text %></p>
-    <% end %>
-  </div>
-<% end %>

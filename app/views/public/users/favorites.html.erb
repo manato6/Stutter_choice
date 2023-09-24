@@ -1,11 +1,21 @@
-<p>いいねした投稿一覧</p>
-
-<% @favorite_posts.each do |favorite_post| %>
-    <p><%= favorite_post.title %></p>
-    <p><%= favorite_post.text %></p>
-    <%= favorite_post.created_at.strftime('%Y/%m/%d') %>
-
-    <% favorite_post.jobs.each do |job| %>
-        <span><%= job.job_name %></span>
-    <% end %>
-    <% end %>
+<div class="container">
+  <h3>いいねした投稿一覧</h3>
+    <table class="table">
+      <% @favorite_posts.each do |favorite_post| %>
+        <tr>
+          <td>
+            <ul class="m-0">
+              <% favorite_post.jobs.each do |job| %>
+                <li><%= job.job_name %></li>
+              <% end %>
+            </ul>
+          </td>
+          <td><%= favorite_post.title %></td>
+          <td><%= favorite_post.created_at.strftime('%Y/%m/%d') %></td>
+          <td>
+            <%= link_to "詳細",post_path(favorite_post) %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+</div>
