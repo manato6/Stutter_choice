@@ -1,63 +1,62 @@
 <div class="container px-5">
-    <div class="row justify-content-center my-3">
-        <div class="col-5">
-            <%= render "public/posts/search", post: @post %>
-        </div>
+  <div class="row justify-content-center my-3">
+    <div class="col-5">
+      <%= render "public/posts/search", post: @post %>
     </div>
-    
+  </div>
+  
     <div class="row">
-        <div class="col-lg-4">
-            <h5>プロフィール</h5>
-                <div>
-                <p><%= image_tag @user.get_profile_image(100,100) %></p>
-                <p><%= @user.name %></p>
-                <p>性別 　<%= @user.gender %></p>
-                <p>年齢 　<%= @user.age %></p>
-                </div>
-
-                <div><%= link_to "プロフィール編集ボタン",edit_user_path, class:"btn btn-secondary" %></div>
-                <div class="mb-5"><%= link_to "いいねした投稿", favorites_user_path(@user), class:"btn btn-secondary" %></div>
-                <div><%= link_to "投稿する",new_post_path, class:"btn btn-secondary btn-lg" %></div>
-        </div>
-        
-        <div class="col-lg-8">
-            <h2>投稿</h2>
-             <table class="table table-hover table-inverse">
-                  <thead>
-                    <tr>
-                      <th>職業</th>
-                      <th>タイトル</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                 
-                          <% @posts.each do |post| %>
-                        <tr>
-                          <td><% post.jobs.each do |job| %>
-                                <span><%= job.job_name %></span>
-                                <% end %></td>
-                          <td><%= post.title %></td>
-                          <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-                          <td>
-                             <% if post.favorited_by?(current_user) %>
-                         <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
-                        <%= link_to post_favorites_path(post.id), method: :delete do %>
-                            いいね<span style="color:red;">❤︎</span>
-                        <% end %>
-                    <% else %>
-                        <!--# 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
-                        <%= link_to post_favorites_path(post.id), method: :post do %>
-                            いいね<span>❤︎</span>
-                        <% end %>
+      <div class="col-lg-4">
+        <h5>プロフィール</h5>
+          <div>
+            <p><%= image_tag @user.get_profile_image(100,100) %></p>
+            <p><%= @user.name %></p>
+            <p>性別 　<%= @user.gender %>性</p>
+            <p>年齢 　<%= @user.age %>歳</p>
+          </div>
+          <div><%= link_to "プロフィール編集ボタン",edit_user_path, class:"btn btn-secondary" %></div>
+          <div class="mb-5"><%= link_to "いいねした投稿", favorites_user_path(@user), class:"btn btn-secondary" %></div>
+          <div><%= link_to "投稿する",new_post_path, class:"btn btn-secondary btn-lg" %></div>
+      </div>
+    
+      <div class="col-lg-8">
+        <h3>投稿</h3>
+          <table class="table table-hover table-inverse">
+            <thead>
+              <tr>
+                <th>職業</th>
+                <th>タイトル</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+          
+            <% @posts.each do |post| %>
+              <tr>
+                <td>
+                  <% post.jobs.each do |job| %>
+                    <span><%= job.job_name %></span>
+                  <% end %>
+                </td>
+                <td><%= post.title %></td>
+                <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+                <td>
+                  <% if post.favorited_by?(current_user) %>
+                  <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
+                    <%= link_to post_favorites_path(post.id), method: :delete do %>
+                    いいね<span style="color:red;">❤︎</span>
                     <% end %>
-                <div><%= link_to "詳細",post_path(post), class:"btn btn-secondary" %></div> 
-                          </td>
-                        </tr>
-                        <% end %>
-                  </table>
-                
-        
-    </div>
+                    <% else %>
+                    <!--# 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+                    <%= link_to post_favorites_path(post.id), method: :post do %>
+                    いいね<span>❤︎</span>
+                    <% end %>
+                  <% end %>
+                  <div><%= link_to "詳細",post_path(post), class:"btn btn-secondary" %></div> 
+                </td>
+              </tr>
+            <% end %>
+          </table>
+      </div>
     </div>
 </div>

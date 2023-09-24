@@ -23,3 +23,27 @@
 .form-comment{
   display: flex;
 }
+
+.top-text{
+  flex-direction: column;
+}
+
+.top-login{
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-bg{
+  background-image: image-url('new-data-services-UO-QYR28hS0-unsplash.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.nav-item{
+  display: inherit;
+}
+
+.fa-house{
+  margin-top: 10px;
+}

@@ -1,18 +1,12 @@
-<div class="container">
-  <div class="row justify-content-center my-3">
-    <h1>STUTTER CHOICE</h1>
-     </div>
-  
-        <table>
-            <tr>
-                <td><%= link_to "sign_up", new_user_registration_path %></td>
-                <td><%= link_to "login", new_user_session_path %></td>
-            </tr>
-        </table>
-        
-
-
-
-      <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>
-    
+<div class="container top-bg">
+  <div class="d-flex justify-content-center align-items-center min-vh-100 top-text">
+    <div>
+      <h1>STUTTER CHOICE</h1>
+    </div>
+    <div class="top-login">
+      <div><%= link_to "sign_up", new_user_registration_path %></div>
+      <div><%= link_to "login", new_user_session_path %></div>
+    </div>
+    <%= link_to 'ゲストログイン', homes_guest_sign_in_path, method: :post %>
+  </div>
 </div>
