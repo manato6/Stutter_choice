@@ -4,9 +4,9 @@
       <h1>STUTTER CHOICE</h1>
     </div>
     <div class="top-login">
-      <div><%= link_to "sign_up", new_user_registration_path %></div>
-      <div><%= link_to "login", new_user_session_path %></div>
+      <div><%= link_to "sign_up", new_user_registration_path, class:"btn btn-secondary" %></div>
+      <div><%= link_to "login", new_user_session_path,class:"btn btn-secondary" %></div>
     </div>
-    <%= link_to 'ゲストログイン', homes_guest_sign_in_path, method: :post %>
+    <%= link_to 'guest login', homes_guest_sign_in_path, method: :post,class:"btn btn-secondary guest-login-text" %>
   </div>
 </div>

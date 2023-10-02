@@ -5,6 +5,15 @@ class ApplicationController < ActionController::Base
     current_user
    end
 
+   def after_sign_out_path_for(resource)
+    case resource
+    when :admin 
+      new_admin_session_path
+    when :user  
+      root_path
+    end
+   end
+
   protected
 
   def configure_permitted_parameters

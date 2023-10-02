@@ -4,7 +4,7 @@
       <%= render "public/posts/search", post: @post %>
     </div>
   </div>
-  
+
     <div class="row">
       <div class="col-lg-4">
         <h5>プロフィール</h5>
@@ -14,11 +14,11 @@
             <p>性別 　<%= @user.gender %>性</p>
             <p>年齢 　<%= @user.age %>歳</p>
           </div>
-          <div><%= link_to "プロフィール編集ボタン",edit_user_path, class:"btn btn-secondary" %></div>
+          <div><%= link_to "プロフィール編集ボタン",edit_user_path, class:"btn btn-secondary profile-edit" %></div>
           <div class="mb-5"><%= link_to "いいねした投稿", favorites_user_path(@user), class:"btn btn-secondary" %></div>
           <div><%= link_to "投稿する",new_post_path, class:"btn btn-secondary btn-lg" %></div>
       </div>
-    
+
       <div class="col-lg-8">
         <h3>投稿</h3>
           <table class="table table-hover table-inverse">
@@ -30,7 +30,7 @@
                 <th></th>
               </tr>
             </thead>
-          
+
             <% @posts.each do |post| %>
               <tr>
                 <td>
@@ -52,7 +52,7 @@
                     いいね<span>❤︎</span>
                     <% end %>
                   <% end %>
-                  <div><%= link_to "詳細",post_path(post), class:"btn btn-secondary" %></div> 
+                  <div><%= link_to "詳細",post_path(post), class:"btn btn-secondary" %></div>
                 </td>
               </tr>
             <% end %>

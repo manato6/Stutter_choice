@@ -1,19 +1,25 @@
 <div class="container">
-<h3 class="text-center my-5">投稿詳細</h3>
-<div class="text-form-center">
+  <h3 class="text-center my-5">投稿詳細</h3>
+    <div class="text-form-center">
+      <p><%= @user.name %></p>
+      <p><%= @user.age %>歳</p>
+      <p><%= @user.gender %>性</p>
+      <p>
+        <ul>
+          <% @post.jobs.each do |job| %>
+            <li><%= job.job_name %></li>
+          <% end %>
+        </ul>
+      </p>
+      <p><%= @post.title %></p>
+      <p><%= @post.text %></p>
+      <P>いいね<%= @post.favorites.count %></P>
 
-<p><%= @user.name %></p>
-<p><%= @user.age %>歳</p>
-<p><%= @user.gender %>性</p>
-<p><%= @post.job %></p>
-<p><%= @post.title %></p>
-<p><%= @post.text %></p>
-<P>いいね<%= @post.favorites.count %></P>
-
-<h2>コメント内容</h2>
-<% @comments.each do |comment| %>
-<%= comment.comment %>
-<%= link_to "削除", admin_comment_path(comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-<% end %>
-</div>
+      <h2>コメント内容</h2>
+        <% @comments.each do |comment| %>
+          <%= comment.comment %>
+          <%= link_to "コメント削除", admin_comment_path(comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <% end %>
+    </div>
+      <%= link_to "<<戻る", admin_user_path(@user) %>
 </div>

@@ -35,7 +35,10 @@
         <%= comment.comment %>
         <%= link_to "コメント削除", post_comment_path(@post.id, comment),class:"btn btn-secondary", method: :delete, "data-confirm" => "本当に削除しますか？" %>
       <% end %>
-  
+      
+      <% if @post.user_id == current_user.id %>
       <%= link_to "投稿削除", post_path(@post.id), class:"btn btn-secondary", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <% end %>
     </div>
+    <%= link_to "<<戻る", :back %>
 </div>
