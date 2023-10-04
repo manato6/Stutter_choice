@@ -20,7 +20,7 @@
           </tr>
         <td><%= @post.text %></td>
       </table>
-  
+
       <div class="form-group">
         <%= form_with(model:[@post, @comment], class: "form-comment", method: :post) do |f| %>
           <%= f.text_area :comment, class:"form-control mr-2", rows: 2 %>
@@ -28,14 +28,16 @@
           <%= f.submit 'コメントする' %>
         <% end %>
       </div>
-  
-  
+
+
       <h4>コメント内容</h4>
       <% @comments.each do |comment| %>
         <%= comment.comment %>
-        <%= link_to "コメント削除", post_comment_path(@post.id, comment),class:"btn btn-secondary", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <% if @post.user_id == current_user.id %>
+          <%= link_to "コメント削除", post_comment_path(@post.id, comment),class:"btn btn-secondary", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <% end %>
       <% end %>
-      
+
       <% if @post.user_id == current_user.id %>
       <%= link_to "投稿削除", post_path(@post.id), class:"btn btn-secondary", method: :delete, "data-confirm" => "本当に削除しますか？" %>
       <% end %>
